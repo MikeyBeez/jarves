@@ -1,6 +1,6 @@
 import wolframalpha
 #u can get ur AppId from wolframalpha.com/ just make an account there
-client = wolframalpha.Client("AppId")
+client = wolframalpha.Client("GWJX2T-3HL8U45EJK")
 import PySimpleGUI as sg
 import wikipedia
 import pyttsx3
@@ -25,12 +25,14 @@ while True:
         engine.runAndWait()
     except:
         #TRY WIKIPEDIA RESULTS
-        wiki_res = wikipedia.summary(values[0], sentences=2)
-        sg.PopupNonBlocking(wiki_res)
-        engine = pyttsx3.init()
-        engine.say(wiki_res)
-        engine.runAndWait()
-
+        try:
+            wiki_res = wikipedia.summary(values[0], sentences=2)
+            sg.PopupNonBlocking(wiki_res)
+            engine = pyttsx3.init()
+            engine.say(wiki_res)
+            engine.runAndWait()
+        except:
+            pass
     print(values[0])
 
 window.close()
